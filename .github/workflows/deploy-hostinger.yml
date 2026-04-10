@@ -48,4 +48,4 @@ jobs:
         run: |
           ssh -p ${{ secrets.HOSTINGER_PORT }} -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
             ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
-            "ls -la ${{ secrets.HOSTINGER_TARGET_DIR }} | head -20"
+            "ls -la ${{ secrets.HOSTINGER_TARGET_DIR }}"

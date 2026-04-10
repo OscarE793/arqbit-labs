@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "María Fernanda López",
+    "role": "CTO",
+    "company": "TechVentures Colombia",
+    "text": "ARQBIT LABS transformó completamente nuestra infraestructura cloud. Redujimos costos en un 40% y mejoramos el tiempo de respuesta de nuestras aplicaciones significativamente.",
+    "avatarUrl": "https://ui-avatars.com/api/?name=Maria+Lopez&background=0D47A1&color=fff&size=80",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "name": "Carlos Andrés Martínez",
+    "role": "Director de Tecnología",
+    "company": "Innovatech SAS",
+    "text": "El equipo de desarrollo full-stack entregó una plataforma robusta y escalable en tiempo récord. Su metodología ágil y comunicación constante hicieron la diferencia.",
+    "avatarUrl": "https://ui-avatars.com/api/?name=Carlos+Martinez&background=1E88E5&color=fff&size=80",
+    "rating": 5
+  },
+  {
+    "id": 3,
+    "name": "Ana Patricia Rodríguez",
+    "role": "Gerente de Operaciones",
+    "company": "DataFlow Corp",
+    "text": "La consultoría tecnológica de ARQBIT LABS nos dio claridad sobre nuestro roadmap digital. Implementamos las recomendaciones y los resultados superaron nuestras expectativas.",
+    "avatarUrl": "https://ui-avatars.com/api/?name=Ana+Rodriguez&background=FF6A00&color=fff&size=80",
+    "rating": 5
+  }
+]

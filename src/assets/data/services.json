@@ -1,0 +1,140 @@
+[
+  {
+    "id": 1,
+    "name": "Desarrollo Web Full-Stack",
+    "category": "Desarrollo",
+    "description": "Aplicaciones web modernas con React, Angular y Node.js para impulsar tu negocio digital.",
+    "fullDescription": "Nuestro servicio de Desarrollo Web Full-Stack abarca desde el diseño de interfaces modernas hasta la implementación de backends robustos y escalables. Utilizamos las últimas tecnologías del mercado como React, Angular, Node.js y bases de datos SQL/NoSQL para construir aplicaciones web que se adaptan a las necesidades específicas de tu empresa. Cada proyecto incluye metodologías ágiles, testing automatizado y despliegue continuo.",
+    "price": 4500000,
+    "imageUrl": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop",
+    "duration": "3-6 meses",
+    "modality": "Remoto / Híbrido",
+    "features": [
+      "Desarrollo frontend con React o Angular",
+      "Backend con Node.js y Express",
+      "Base de datos PostgreSQL o MongoDB",
+      "API RESTful documentada",
+      "Testing unitario y de integración",
+      "Despliegue en la nube (AWS/Azure)",
+      "Soporte post-lanzamiento por 3 meses",
+      "Panel de administración incluido"
+    ],
+    "techTags": ["React", "Angular", "Node.js", "PostgreSQL", "Docker", "AWS"],
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "Infraestructura Cloud",
+    "category": "Cloud",
+    "description": "Migración y gestión de infraestructura en AWS, Azure y Google Cloud Platform.",
+    "fullDescription": "Ofrecemos servicios integrales de infraestructura cloud que incluyen migración de servidores on-premise, diseño de arquitecturas escalables, optimización de costos y gestión continua de recursos en las principales plataformas cloud del mercado. Nuestro equipo certificado garantiza alta disponibilidad, seguridad y rendimiento óptimo para tus aplicaciones y datos empresariales.",
+    "price": 6200000,
+    "imageUrl": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    "duration": "2-4 meses",
+    "modality": "Remoto",
+    "features": [
+      "Evaluación de infraestructura actual",
+      "Plan de migración detallado",
+      "Configuración de VPC y networking",
+      "Auto-scaling y load balancing",
+      "Monitoreo 24/7 con alertas",
+      "Backup y disaster recovery",
+      "Optimización de costos cloud",
+      "Capacitación al equipo interno"
+    ],
+    "techTags": ["AWS", "Azure", "GCP", "Terraform", "Kubernetes", "Docker"],
+    "status": "active"
+  },
+  {
+    "id": 3,
+    "name": "Ciberseguridad Empresarial",
+    "category": "Seguridad",
+    "description": "Auditorías de seguridad, pentesting y monitoreo 24/7 para proteger tus activos digitales.",
+    "fullDescription": "Protege tu organización con nuestro servicio integral de ciberseguridad que incluye auditorías de vulnerabilidades, pruebas de penetración (pentesting), implementación de políticas de seguridad y monitoreo continuo de amenazas. Nuestro equipo de expertos certificados utiliza las herramientas más avanzadas del mercado para identificar y mitigar riesgos antes de que se conviertan en incidentes de seguridad.",
+    "price": 5800000,
+    "imageUrl": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop",
+    "duration": "1-3 meses",
+    "modality": "Remoto / Presencial",
+    "features": [
+      "Auditoría completa de vulnerabilidades",
+      "Pruebas de penetración (pentesting)",
+      "Análisis de código fuente",
+      "Implementación de firewalls y WAF",
+      "Monitoreo SOC 24/7",
+      "Plan de respuesta ante incidentes",
+      "Capacitación en seguridad al personal",
+      "Certificación de cumplimiento normativo"
+    ],
+    "techTags": ["OWASP", "Kali Linux", "Nessus", "Splunk", "ISO 27001"],
+    "status": "active"
+  },
+  {
+    "id": 4,
+    "name": "Soporte IT Dedicado",
+    "category": "Soporte IT",
+    "description": "Mesa de ayuda y mantenimiento preventivo para garantizar la continuidad operativa.",
+    "fullDescription": "Nuestro servicio de Soporte IT Dedicado ofrece atención técnica especializada con tiempos de respuesta garantizados. Incluye mesa de ayuda multicanal, mantenimiento preventivo y correctivo de infraestructura, gestión de activos tecnológicos y administración de redes. Aseguramos la continuidad operativa de tu empresa con un equipo técnico disponible cuando más lo necesitas.",
+    "price": 3200000,
+    "imageUrl": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=400&fit=crop",
+    "duration": "Contrato mensual",
+    "modality": "Remoto / Presencial",
+    "features": [
+      "Mesa de ayuda multicanal (email, chat, teléfono)",
+      "Tiempo de respuesta garantizado (SLA)",
+      "Mantenimiento preventivo programado",
+      "Gestión de activos tecnológicos",
+      "Administración de redes y servidores",
+      "Backup y recuperación de datos",
+      "Reportes mensuales de gestión",
+      "Escalamiento a soporte especializado"
+    ],
+    "techTags": ["ITIL", "ServiceNow", "Active Directory", "Windows Server", "Linux"],
+    "status": "active"
+  },
+  {
+    "id": 5,
+    "name": "DevOps & CI/CD",
+    "category": "DevOps",
+    "description": "Automatización de pipelines, contenedores Docker y orquestación con Kubernetes.",
+    "fullDescription": "Transformamos tu proceso de desarrollo con prácticas DevOps de vanguardia. Implementamos pipelines de integración y despliegue continuo (CI/CD), containerización con Docker, orquestación con Kubernetes e infraestructura como código. Nuestro objetivo es reducir tiempos de entrega, minimizar errores y aumentar la frecuencia de releases manteniendo la calidad del software.",
+    "price": 5200000,
+    "imageUrl": "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&h=400&fit=crop",
+    "duration": "2-4 meses",
+    "modality": "Remoto",
+    "features": [
+      "Diseño de pipeline CI/CD completo",
+      "Containerización con Docker",
+      "Orquestación con Kubernetes",
+      "Infraestructura como código (Terraform)",
+      "Monitoreo con Prometheus y Grafana",
+      "Gestión de secretos y configuraciones",
+      "Automatización de testing",
+      "Documentación de procesos DevOps"
+    ],
+    "techTags": ["Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Terraform", "Prometheus"],
+    "status": "active"
+  },
+  {
+    "id": 6,
+    "name": "Consultoría Tecnológica",
+    "category": "Consultoría",
+    "description": "Diagnóstico tecnológico y roadmap estratégico para la transformación digital.",
+    "fullDescription": "Nuestro servicio de Consultoría Tecnológica está diseñado para empresas que buscan optimizar sus procesos mediante la tecnología. Realizamos un diagnóstico completo de tu infraestructura actual, identificamos oportunidades de mejora y diseñamos un roadmap estratégico de transformación digital alineado con los objetivos de negocio. Incluye análisis de mercado, benchmarking tecnológico y plan de implementación por fases.",
+    "price": 3800000,
+    "imageUrl": "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop",
+    "duration": "1-2 meses",
+    "modality": "Presencial / Remoto",
+    "features": [
+      "Diagnóstico de infraestructura actual",
+      "Análisis de procesos empresariales",
+      "Benchmarking tecnológico del sector",
+      "Roadmap de transformación digital",
+      "Evaluación de proveedores y herramientas",
+      "Plan de implementación por fases",
+      "Estimación de inversión y ROI",
+      "Acompañamiento en la ejecución"
+    ],
+    "techTags": ["TOGAF", "Agile", "Scrum", "ITIL", "Design Thinking"],
+    "status": "active"
+  }
+]

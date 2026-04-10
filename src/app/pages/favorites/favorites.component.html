@@ -1,0 +1,72 @@
+<!-- Page Header -->
+<section class="bg-arq-dark py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="fav-title font-exo font-bold text-4xl md:text-5xl text-white mb-4" style="visibility: hidden;">
+      Mis <span class="text-arq-orange">Favoritos</span>
+    </h1>
+    <p class="fav-subtitle text-gray-400 text-lg" style="visibility: hidden;">
+      Servicios que has guardado para revisar más tarde.
+      <span *ngIf="favoriteServices.length > 0" class="text-arq-yellow font-semibold">
+        ({{ favoriteServices.length }} servicio{{ favoriteServices.length !== 1 ? 's' : '' }})
+      </span>
+    </p>
+  </div>
+</section>
+
+<section class="py-12 bg-gray-50 min-h-[50vh]">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Favorites List -->
+    <div *ngIf="favoriteServices.length > 0" class="space-y-4">
+      <div *ngFor="let service of favoriteServices"
+           class="fav-item bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden" style="visibility: hidden;">
+        <div class="flex flex-col sm:flex-row items-center">
+          <!-- Thumbnail -->
+          <div class="w-full sm:w-32 h-32 flex-shrink-0">
+            <img [src]="service.imageUrl" [alt]="service.name" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Info -->
+          <div class="flex-1 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between w-full gap-4">
+            <div>
+              <span class="text-arq-blue text-xs font-semibold uppercase tracking-wider">{{ service.category }}</span>
+              <h3 class="font-exo font-bold text-lg text-arq-dark">{{ service.name }}</h3>
+              <span class="font-rajdhani font-bold text-xl text-arq-blue">{{ formatPrice(service.price) }}</span>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-3" [attr.data-service-id]="service.id">
+              <a [routerLink]="['/servicios', service.id]"
+                 class="bg-arq-blue text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-arq-sky transition-colors">
+                Ver Detalle
+              </a>
+              <button (click)="removeFavorite(service.id)"
+                      class="bg-red-500 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-red-600 transition-colors">
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="favoriteServices.length === 0" class="empty-state text-center py-20" style="visibility: hidden;">
+      <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+        </svg>
+      </div>
+      <h3 class="font-exo font-bold text-xl text-arq-dark mb-2">No tienes favoritos aún</h3>
+      <p class="text-gray-400 mb-6">Explora nuestro catálogo y agrega los servicios que más te interesen.</p>
+      <a routerLink="/servicios"
+         class="inline-flex items-center bg-arq-blue text-white px-8 py-3 rounded-xl font-exo font-semibold hover:bg-arq-sky transition-colors">
+        Explorar Catálogo
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

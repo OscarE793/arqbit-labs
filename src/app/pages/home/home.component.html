@@ -1,0 +1,169 @@
+<!-- Hero Section -->
+<section class="relative bg-arq-dark min-h-screen flex items-center overflow-hidden">
+  <!-- Background pattern -->
+  <div class="absolute inset-0 opacity-5">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-arq-sky rounded-full blur-3xl"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-arq-orange rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div>
+        <span class="hero-badge inline-flex items-center bg-arq-blue/20 text-arq-sky text-sm font-semibold px-4 py-1.5 rounded-full mb-6 border border-arq-sky/20" style="visibility: hidden;">
+          <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"/>
+          </svg>
+          Soluciones Digitales Empresariales
+        </span>
+
+        <h1 class="hero-title font-exo font-extrabold text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6" style="visibility: hidden;">
+          Transformamos tu negocio con
+          <span class="bg-gradient-to-r from-arq-orange to-arq-amber bg-clip-text text-transparent">
+            tecnología de vanguardia
+          </span>
+        </h1>
+
+        <p class="hero-description text-gray-400 text-lg mb-8 leading-relaxed max-w-xl" style="visibility: hidden;">
+          En ARQBIT LABS diseñamos, desarrollamos e implementamos soluciones tecnológicas
+          que impulsan el crecimiento empresarial. Desde desarrollo web hasta ciberseguridad,
+          somos tu aliado estratégico digital.
+        </p>
+
+        <div class="hero-buttons flex flex-wrap gap-4" style="visibility: hidden;">
+          <a routerLink="/servicios"
+             class="bg-gradient-to-r from-arq-orange to-arq-amber text-white px-8 py-3.5 rounded-xl font-exo font-semibold hover:shadow-lg hover:shadow-arq-orange/30 transition-all inline-flex items-center">
+            Explorar Servicios
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a routerLink="/contacto"
+             class="border border-white/20 text-white px-8 py-3.5 rounded-xl font-exo font-semibold hover:bg-white/10 transition-all">
+            Contactar
+          </a>
+        </div>
+      </div>
+
+      <!-- Right - Floating Cards -->
+      <div class="hidden lg:block relative">
+        <div class="relative w-full h-96">
+          <div class="floating-card absolute top-0 right-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 w-56" style="visibility: hidden;">
+            <div class="text-arq-orange font-rajdhani font-bold text-3xl">24+</div>
+            <div class="text-white text-sm">Servicios Activos</div>
+          </div>
+          <div class="floating-card absolute top-32 left-0 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 w-56" style="visibility: hidden;">
+            <div class="text-arq-yellow font-rajdhani font-bold text-3xl">99.9%</div>
+            <div class="text-white text-sm">Uptime Garantizado</div>
+          </div>
+          <div class="floating-card absolute bottom-0 right-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 w-56" style="visibility: hidden;">
+            <div class="text-arq-sky font-rajdhani font-bold text-3xl">&lt;1 min</div>
+            <div class="text-white text-sm">Deploy Automatizado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats Bar -->
+<section class="stats-section bg-arq-blue py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div *ngFor="let stat of stats" class="stat-item text-center" style="visibility: hidden;">
+        <div class="font-rajdhani font-bold text-3xl md:text-4xl text-white mb-1">{{ stat.value }}</div>
+        <div class="text-blue-200 text-sm">{{ stat.label }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Services -->
+<section class="featured-section py-20 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="section-header text-center mb-12" style="visibility: hidden;">
+      <span class="text-arq-orange font-semibold text-sm uppercase tracking-wider">Nuestros Servicios</span>
+      <h2 class="font-exo font-bold text-3xl md:text-4xl text-arq-dark mt-2">
+        Servicios Destacados
+      </h2>
+      <p class="text-gray-500 mt-4 max-w-2xl mx-auto">
+        Descubre nuestras soluciones tecnológicas diseñadas para impulsar tu empresa al siguiente nivel.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let service of featuredServices" class="service-card-wrapper" style="visibility: hidden;">
+        <app-service-card [service]="service"></app-service-card>
+      </div>
+    </div>
+
+    <div class="text-center mt-10">
+      <a routerLink="/servicios"
+         class="inline-flex items-center bg-arq-dark text-white px-8 py-3 rounded-xl font-exo font-semibold hover:bg-arq-blue transition-colors">
+        Ver Todos los Servicios
+        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section py-20 bg-arq-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="testimonials-header text-center mb-12" style="visibility: hidden;">
+      <span class="text-arq-orange font-semibold text-sm uppercase tracking-wider">Testimonios</span>
+      <h2 class="font-exo font-bold text-3xl md:text-4xl text-white mt-2">
+        Lo que dicen nuestros clientes
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div *ngFor="let testimonial of testimonials"
+           class="testimonial-card bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all" style="visibility: hidden;">
+        <!-- Stars -->
+        <div class="flex space-x-1 mb-4">
+          <svg *ngFor="let star of getStars(testimonial.rating)" class="w-5 h-5 text-arq-yellow" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+          </svg>
+        </div>
+
+        <!-- Quote -->
+        <p class="text-gray-300 text-sm leading-relaxed mb-6 italic">
+          "{{ testimonial.text }}"
+        </p>
+
+        <!-- Author -->
+        <div class="flex items-center space-x-3">
+          <img [src]="testimonial.avatarUrl" [alt]="testimonial.name"
+               class="w-12 h-12 rounded-full">
+          <div>
+            <div class="text-white font-semibold text-sm">{{ testimonial.name }}</div>
+            <div class="text-gray-400 text-xs">{{ testimonial.role }}, {{ testimonial.company }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Banner -->
+<section class="cta-section py-20 bg-gradient-to-r from-arq-blue to-arq-sky">
+  <div class="cta-content max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center" style="visibility: hidden;">
+    <h2 class="font-exo font-bold text-3xl md:text-4xl text-white mb-4">
+      ¿Listo para transformar tu empresa?
+    </h2>
+    <p class="text-blue-100 text-lg mb-8 max-w-2xl mx-auto">
+      Agenda una consultoría gratuita con nuestros expertos y descubre cómo la tecnología
+      puede impulsar tu negocio al siguiente nivel.
+    </p>
+    <a routerLink="/contacto"
+       class="inline-flex items-center bg-gradient-to-r from-arq-orange to-arq-amber text-white px-10 py-4 rounded-xl font-exo font-bold text-lg hover:shadow-xl hover:shadow-arq-orange/30 transition-all">
+      Solicitar Consultoría Gratuita
+      <svg class="w-6 h-6 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+      </svg>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+<!-- Page Header -->
+<section class="bg-arq-dark py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="catalog-title font-exo font-bold text-4xl md:text-5xl text-white mb-4" style="visibility: hidden;">
+      Catálogo de <span class="text-arq-orange">Servicios</span>
+    </h1>
+    <p class="catalog-subtitle text-gray-400 text-lg max-w-2xl mx-auto" style="visibility: hidden;">
+      Explora nuestra amplia gama de soluciones tecnológicas diseñadas para
+      impulsar la transformación digital de tu empresa.
+    </p>
+  </div>
+</section>
+
+<!-- Filters & Grid -->
+<section class="py-12 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Category Filters -->
+    <div class="flex flex-wrap gap-3 justify-center mb-10">
+      <button *ngFor="let cat of categories"
+              (click)="filterByCategory(cat)"
+              class="filter-chip px-5 py-2 rounded-full text-sm font-semibold transition-all"
+              [class]="activeCategory === cat
+                ? 'bg-arq-orange text-white shadow-lg shadow-arq-orange/30'
+                : 'bg-white text-gray-600 border border-gray-200 hover:border-arq-sky hover:text-arq-blue'"
+              style="visibility: hidden;">
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let service of filteredServices" class="catalog-card" style="visibility: hidden;">
+        <app-service-card [service]="service"></app-service-card>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="filteredServices.length === 0" class="text-center py-20">
+      <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <p class="text-gray-400 text-lg">No se encontraron servicios en esta categoría.</p>
+    </div>
+  </div>
+</section>

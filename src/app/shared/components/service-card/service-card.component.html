@@ -1,0 +1,39 @@
+<div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 hover:border-arq-sky/30 group">
+  <!-- Image -->
+  <div class="relative h-48 overflow-hidden">
+    <img [src]="service.imageUrl" [alt]="service.name"
+         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+    <div class="absolute top-3 left-3">
+      <span class="bg-arq-blue/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+        {{ service.category }}
+      </span>
+    </div>
+    <button (click)="toggleFavorite($event)"
+            class="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all"
+            [class]="isFavorite ? 'bg-arq-orange text-white' : 'bg-white/90 text-gray-400 hover:text-arq-orange'">
+      <svg class="w-5 h-5" [attr.fill]="isFavorite ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Content -->
+  <div class="p-5">
+    <h3 class="font-exo font-bold text-lg text-arq-dark mb-2 group-hover:text-arq-blue transition-colors">
+      {{ service.name }}
+    </h3>
+    <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+      {{ service.description }}
+    </p>
+    <div class="flex items-center justify-between">
+      <span class="font-rajdhani font-bold text-xl text-arq-blue">
+        {{ formatPrice(service.price) }}
+      </span>
+      <a [routerLink]="['/servicios', service.id]"
+         class="bg-arq-blue text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-arq-sky transition-colors">
+        Ver más
+      </a>
+    </div>
+  </div>
+</div>

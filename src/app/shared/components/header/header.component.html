@@ -1,0 +1,67 @@
+<header class="bg-arq-dark/95 backdrop-blur-md fixed w-full top-0 z-50 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center space-x-2" (click)="closeMenu()">
+        <div class="w-8 h-8 bg-gradient-to-br from-arq-orange to-arq-amber rounded-lg flex items-center justify-center">
+          <span class="text-white font-exo font-bold text-sm">A</span>
+        </div>
+        <span class="text-white font-exo font-bold text-xl">ARQBIT <span class="text-arq-orange">LABS</span></span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a routerLink="/" routerLinkActive="text-arq-orange" [routerLinkActiveOptions]="{exact: true}"
+           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Inicio</a>
+        <a routerLink="/servicios" routerLinkActive="text-arq-orange"
+           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Servicios</a>
+        <a routerLink="/admin" routerLinkActive="text-arq-orange"
+           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Gestión</a>
+        <a routerLink="/favoritos" routerLinkActive="text-arq-orange"
+           class="text-gray-300 hover:text-white transition-colors font-source text-sm relative">
+          Favoritos
+          <span *ngIf="favCount > 0"
+                class="absolute -top-2 -right-4 bg-arq-orange text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            {{ favCount }}
+          </span>
+        </a>
+        <a routerLink="/contacto" routerLinkActive="text-arq-orange"
+           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Contacto</a>
+      </nav>
+
+      <!-- CTA Button Desktop -->
+      <a routerLink="/servicios"
+         class="hidden md:inline-flex bg-gradient-to-r from-arq-orange to-arq-amber text-white px-5 py-2 rounded-lg font-exo font-semibold text-sm hover:shadow-lg hover:shadow-arq-orange/30 transition-all">
+        Empezar
+      </a>
+
+      <!-- Mobile Menu Button -->
+      <button (click)="toggleMenu()" class="md:hidden text-white p-2">
+        <svg *ngIf="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg *ngIf="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div *ngIf="mobileMenuOpen" class="md:hidden pb-4 border-t border-white/10 mt-2 pt-4">
+      <nav class="flex flex-col space-y-3">
+        <a routerLink="/" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Inicio</a>
+        <a routerLink="/servicios" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Servicios</a>
+        <a routerLink="/admin" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Gestión</a>
+        <a routerLink="/favoritos" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">
+          Favoritos
+          <span *ngIf="favCount > 0" class="ml-2 bg-arq-orange text-white text-xs rounded-full px-2 py-0.5">{{ favCount }}</span>
+        </a>
+        <a routerLink="/contacto" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Contacto</a>
+        <a routerLink="/servicios" (click)="closeMenu()"
+           class="bg-gradient-to-r from-arq-orange to-arq-amber text-white px-5 py-2 rounded-lg font-exo font-semibold text-sm text-center">
+          Empezar
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

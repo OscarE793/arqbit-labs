@@ -1,45 +1,74 @@
-<!-- Page Header -->
-<section class="bg-arq-dark py-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h1 class="catalog-title font-exo font-bold text-4xl md:text-5xl text-white mb-4" style="visibility: hidden;">
-      Catálogo de <span class="text-arq-orange">Servicios</span>
+<!-- ============================================================ -->
+<!-- PAGE HEADER                                                  -->
+<!-- ============================================================ -->
+<section class="relative pt-32 pb-16 px-6 overflow-hidden">
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[100px]"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="flex items-center gap-2 mb-4">
+      <div class="h-[1px] w-8 bg-secondary"></div>
+      <span class="text-secondary font-label text-xs font-bold uppercase tracking-widest">Catálogo Completo</span>
+    </div>
+    <h1 class="catalog-title text-5xl md:text-7xl font-headline font-bold tracking-tighter leading-[0.95] text-on-surface mb-6">
+      Servicios <br>
+      <span class="text-primary">Tecnológicos</span>
     </h1>
-    <p class="catalog-subtitle text-gray-400 text-lg max-w-2xl mx-auto" style="visibility: hidden;">
-      Explora nuestra amplia gama de soluciones tecnológicas diseñadas para
-      impulsar la transformación digital de tu empresa.
+    <p class="catalog-subtitle text-lg md:text-xl text-on-surface-variant max-w-2xl font-light leading-relaxed">
+      Descubre nuestro ecosistema de soluciones diseñadas para elevar la arquitectura digital de tu empresa.
     </p>
   </div>
 </section>
 
-<!-- Filters & Grid -->
-<section class="py-12 bg-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Category Filters -->
-    <div class="flex flex-wrap gap-3 justify-center mb-10">
+<!-- ============================================================ -->
+<!-- FILTER PILLS                                                 -->
+<!-- ============================================================ -->
+<section class="px-6 py-8 sticky top-16 z-30 bg-background/80 backdrop-blur-md">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center gap-3 overflow-x-auto hide-scrollbar pb-2">
       <button *ngFor="let cat of categories"
               (click)="filterByCategory(cat)"
-              class="filter-chip px-5 py-2 rounded-full text-sm font-semibold transition-all"
-              [class]="activeCategory === cat
-                ? 'bg-arq-orange text-white shadow-lg shadow-arq-orange/30'
-                : 'bg-white text-gray-600 border border-gray-200 hover:border-arq-sky hover:text-arq-blue'"
-              style="visibility: hidden;">
+              class="filter-chip filter-pill"
+              [class.active]="activeCategory === cat">
         {{ cat }}
       </button>
     </div>
+  </div>
+</section>
 
-    <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div *ngFor="let service of filteredServices" class="catalog-card" style="visibility: hidden;">
+<!-- ============================================================ -->
+<!-- SERVICES GRID                                                -->
+<!-- ============================================================ -->
+<section class="py-16 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between mb-10">
+      <p class="font-label text-sm text-on-surface-variant">
+        <span class="text-on-surface font-bold">{{ filteredServices.length }}</span>
+        {{ filteredServices.length === 1 ? 'servicio encontrado' : 'servicios encontrados' }}
+      </p>
+      <div class="hidden md:flex items-center gap-2 text-on-surface-variant">
+        <span class="material-symbols-outlined text-lg">grid_view</span>
+        <span class="font-label text-xs uppercase tracking-widest">Vista Grid</span>
+      </div>
+    </div>
+
+    <div *ngIf="filteredServices.length > 0; else emptyState"
+         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div *ngFor="let service of filteredServices" class="catalog-card">
         <app-service-card [service]="service"></app-service-card>
       </div>
     </div>
 
-    <!-- Empty State -->
-    <div *ngIf="filteredServices.length === 0" class="text-center py-20">
-      <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-      </svg>
-      <p class="text-gray-400 text-lg">No se encontraron servicios en esta categoría.</p>
-    </div>
+    <ng-template #emptyState>
+      <div class="flex flex-col items-center justify-center py-24 text-center">
+        <div class="w-20 h-20 rounded-full bg-surface-container flex items-center justify-center mb-6">
+          <span class="material-symbols-outlined text-on-surface-variant text-4xl">search_off</span>
+        </div>
+        <h3 class="font-headline font-bold text-2xl text-on-surface mb-2">Sin resultados</h3>
+        <p class="text-on-surface-variant font-body">No hay servicios en esta categoría por el momento.</p>
+      </div>
+    </ng-template>
   </div>
 </section>

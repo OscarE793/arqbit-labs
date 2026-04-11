@@ -5,6 +5,8 @@ import { ServiceDetailComponent } from './pages/service-detail/service-detail.co
 import { ContactComponent } from './pages/contact/contact.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { LoginComponent } from './pages/login/login.component';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +14,7 @@ export const routes: Routes = [
   { path: 'servicios/:id', component: ServiceDetailComponent },
   { path: 'contacto', component: ContactComponent },
   { path: 'favoritos', component: FavoritesComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: '' }
 ];

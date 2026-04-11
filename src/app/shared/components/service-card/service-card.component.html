@@ -1,38 +1,49 @@
-<div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 border border-gray-100 hover:border-arq-sky/30 group">
+<div class="group bg-surface-container rounded-2xl overflow-hidden transition-all duration-300 hover:bg-surface-container-high hover:-translate-y-2 hover:shadow-card-hover">
   <!-- Image -->
-  <div class="relative h-48 overflow-hidden">
+  <div class="relative h-52 overflow-hidden">
     <img [src]="service.imageUrl" [alt]="service.name"
-         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-    <div class="absolute top-3 left-3">
-      <span class="bg-arq-blue/90 text-white text-xs font-semibold px-3 py-1 rounded-full">
+         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+    <div class="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/30 to-transparent"></div>
+    <div class="absolute top-4 left-4">
+      <span class="bg-background/80 backdrop-blur-sm text-on-surface text-[11px] font-label font-semibold px-3 py-1.5 rounded-full uppercase tracking-wider">
         {{ service.category }}
       </span>
     </div>
     <button (click)="toggleFavorite($event)"
-            class="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center transition-all"
-            [class]="isFavorite ? 'bg-arq-orange text-white' : 'bg-white/90 text-gray-400 hover:text-arq-orange'">
-      <svg class="w-5 h-5" [attr.fill]="isFavorite ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-      </svg>
+            [attr.aria-label]="isFavorite ? 'Quitar de favoritos' : 'Agregar a favoritos'"
+            class="absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center transition-all backdrop-blur-sm"
+            [class]="isFavorite ? 'bg-primary text-on-primary' : 'bg-background/70 text-on-surface-variant hover:text-primary'">
+      <span class="material-symbols-outlined text-xl" [class.filled]="isFavorite">favorite</span>
     </button>
   </div>
 
   <!-- Content -->
-  <div class="p-5">
-    <h3 class="font-exo font-bold text-lg text-arq-dark mb-2 group-hover:text-arq-blue transition-colors">
+  <div class="p-6">
+    <h3 class="font-headline font-bold text-xl text-on-surface mb-2 tracking-tight group-hover:text-primary transition-colors">
       {{ service.name }}
     </h3>
-    <p class="text-gray-500 text-sm mb-4 line-clamp-2">
+    <p class="text-on-surface-variant text-sm font-body mb-5 line-clamp-2 leading-relaxed">
       {{ service.description }}
     </p>
-    <div class="flex items-center justify-between">
-      <span class="font-rajdhani font-bold text-xl text-arq-blue">
-        {{ formatPrice(service.price) }}
+
+    <div class="flex flex-wrap gap-2 mb-5">
+      <span *ngFor="let tag of (service.techTags || []).slice(0, 3)"
+            class="text-[10px] font-label font-medium px-2 py-1 rounded bg-surface-container-highest text-on-surface-variant uppercase tracking-wide">
+        {{ tag }}
       </span>
+    </div>
+
+    <div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+      <div class="flex flex-col">
+        <span class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Desde</span>
+        <span class="font-headline font-bold text-xl text-on-surface">
+          {{ formatPrice(service.price) }}
+        </span>
+      </div>
       <a [routerLink]="['/servicios', service.id]"
-         class="bg-arq-blue text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-arq-sky transition-colors">
+         class="gradient-cta px-4 py-2.5 rounded-full text-sm font-label font-semibold inline-flex items-center gap-1.5">
         Ver más
+        <span class="material-symbols-outlined text-base">arrow_forward</span>
       </a>
     </div>
   </div>

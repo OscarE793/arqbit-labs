@@ -9,7 +9,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   imports: [RouterOutlet, HeaderComponent, FooterComponent],
   template: `
     <app-header></app-header>
-    <main class="pt-16">
+    <main class="min-h-screen bg-background text-on-background">
       <router-outlet></router-outlet>
     </main>
     <app-footer></app-footer>

@@ -1,64 +1,107 @@
-<header class="bg-arq-dark/95 backdrop-blur-md fixed w-full top-0 z-50 border-b border-white/10">
+<header class="glass-header fixed w-full top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->
-      <a routerLink="/" class="flex items-center space-x-2" (click)="closeMenu()">
-        <div class="w-8 h-8 bg-gradient-to-br from-arq-orange to-arq-amber rounded-lg flex items-center justify-center">
-          <span class="text-white font-exo font-bold text-sm">A</span>
+      <a routerLink="/" class="flex items-center gap-3 group" (click)="closeMenu()">
+        <div class="w-9 h-9 rounded-lg gradient-cta flex items-center justify-center shadow-lg shadow-primary/30">
+          <span class="material-symbols-outlined text-white text-xl">hub</span>
         </div>
-        <span class="text-white font-exo font-bold text-xl">ARQBIT <span class="text-arq-orange">LABS</span></span>
+        <div class="flex flex-col leading-none">
+          <span class="font-headline font-bold text-lg text-on-surface tracking-tight">
+            ARQBIT <span class="text-primary">LABS</span>
+          </span>
+          <span class="font-label text-[10px] text-on-surface-variant tracking-widest uppercase">Digital Architects</span>
+        </div>
       </a>
 
       <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center space-x-8">
-        <a routerLink="/" routerLinkActive="text-arq-orange" [routerLinkActiveOptions]="{exact: true}"
-           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Inicio</a>
-        <a routerLink="/servicios" routerLinkActive="text-arq-orange"
-           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Servicios</a>
-        <a routerLink="/admin" routerLinkActive="text-arq-orange"
-           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Gestión</a>
-        <a routerLink="/favoritos" routerLinkActive="text-arq-orange"
-           class="text-gray-300 hover:text-white transition-colors font-source text-sm relative">
+      <nav class="hidden lg:flex items-center gap-8">
+        <a routerLink="/" routerLinkActive="text-primary" [routerLinkActiveOptions]="{exact: true}"
+           class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-sm font-medium">
+          Inicio
+        </a>
+        <a routerLink="/servicios" routerLinkActive="text-primary"
+           class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-sm font-medium">
+          Servicios
+        </a>
+        <a routerLink="/favoritos" routerLinkActive="text-primary"
+           class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-sm font-medium relative">
           Favoritos
           <span *ngIf="favCount > 0"
-                class="absolute -top-2 -right-4 bg-arq-orange text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                class="absolute -top-2 -right-5 bg-primary text-on-primary text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center">
             {{ favCount }}
           </span>
         </a>
-        <a routerLink="/contacto" routerLinkActive="text-arq-orange"
-           class="text-gray-300 hover:text-white transition-colors font-source text-sm">Contacto</a>
+        <a routerLink="/contacto" routerLinkActive="text-primary"
+           class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-sm font-medium">
+          Contacto
+        </a>
+        <a *ngIf="isAuthenticated" routerLink="/admin" routerLinkActive="text-primary"
+           class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-sm font-medium flex items-center gap-1">
+          <span class="material-symbols-outlined text-base">admin_panel_settings</span>
+          Gestión
+        </a>
       </nav>
 
-      <!-- CTA Button Desktop -->
-      <a routerLink="/servicios"
-         class="hidden md:inline-flex bg-gradient-to-r from-arq-orange to-arq-amber text-white px-5 py-2 rounded-lg font-exo font-semibold text-sm hover:shadow-lg hover:shadow-arq-orange/30 transition-all">
-        Empezar
-      </a>
+      <!-- CTA Desktop -->
+      <div class="hidden lg:flex items-center gap-3">
+        <ng-container *ngIf="!isAuthenticated; else logoutTpl">
+          <a routerLink="/login"
+             class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-sm font-medium flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">login</span>
+            Admin
+          </a>
+        </ng-container>
+        <ng-template #logoutTpl>
+          <button (click)="logout()"
+                  class="text-on-surface-variant hover:text-error transition-colors font-label text-sm font-medium flex items-center gap-1">
+            <span class="material-symbols-outlined text-base">logout</span>
+            Salir
+          </button>
+        </ng-template>
+        <a routerLink="/contacto"
+           class="gradient-cta px-5 py-2.5 rounded-full font-label font-semibold text-sm inline-flex items-center gap-2">
+          Empezar
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </a>
+      </div>
 
-      <!-- Mobile Menu Button -->
-      <button (click)="toggleMenu()" class="md:hidden text-white p-2">
-        <svg *ngIf="!mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-        <svg *ngIf="mobileMenuOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
+      <!-- Mobile toggle -->
+      <button (click)="toggleMenu()" class="lg:hidden text-on-surface p-2" aria-label="Menú">
+        <span class="material-symbols-outlined text-3xl">
+          {{ mobileMenuOpen ? 'close' : 'menu' }}
+        </span>
       </button>
     </div>
 
     <!-- Mobile Menu -->
-    <div *ngIf="mobileMenuOpen" class="md:hidden pb-4 border-t border-white/10 mt-2 pt-4">
-      <nav class="flex flex-col space-y-3">
-        <a routerLink="/" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Inicio</a>
-        <a routerLink="/servicios" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Servicios</a>
-        <a routerLink="/admin" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Gestión</a>
-        <a routerLink="/favoritos" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">
-          Favoritos
-          <span *ngIf="favCount > 0" class="ml-2 bg-arq-orange text-white text-xs rounded-full px-2 py-0.5">{{ favCount }}</span>
-        </a>
-        <a routerLink="/contacto" (click)="closeMenu()" class="text-gray-300 hover:text-white transition-colors font-source">Contacto</a>
+    <div *ngIf="mobileMenuOpen" class="lg:hidden pb-6 pt-4 border-t border-outline-variant/40 animate-fade-in">
+      <nav class="flex flex-col gap-1">
+        <a routerLink="/" (click)="closeMenu()"
+           class="px-4 py-3 rounded-lg hover:bg-surface-container text-on-surface font-label">Inicio</a>
         <a routerLink="/servicios" (click)="closeMenu()"
-           class="bg-gradient-to-r from-arq-orange to-arq-amber text-white px-5 py-2 rounded-lg font-exo font-semibold text-sm text-center">
+           class="px-4 py-3 rounded-lg hover:bg-surface-container text-on-surface font-label">Servicios</a>
+        <a routerLink="/favoritos" (click)="closeMenu()"
+           class="px-4 py-3 rounded-lg hover:bg-surface-container text-on-surface font-label flex items-center justify-between">
+          <span>Favoritos</span>
+          <span *ngIf="favCount > 0" class="bg-primary text-on-primary text-xs rounded-full px-2 py-0.5 font-bold">{{ favCount }}</span>
+        </a>
+        <a routerLink="/contacto" (click)="closeMenu()"
+           class="px-4 py-3 rounded-lg hover:bg-surface-container text-on-surface font-label">Contacto</a>
+        <a *ngIf="isAuthenticated" routerLink="/admin" (click)="closeMenu()"
+           class="px-4 py-3 rounded-lg hover:bg-surface-container text-on-surface font-label flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">admin_panel_settings</span> Gestión
+        </a>
+        <a *ngIf="!isAuthenticated" routerLink="/login" (click)="closeMenu()"
+           class="px-4 py-3 rounded-lg hover:bg-surface-container text-on-surface font-label flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">login</span> Acceso Admin
+        </a>
+        <button *ngIf="isAuthenticated" (click)="logout()"
+                class="text-left px-4 py-3 rounded-lg hover:bg-surface-container text-error font-label flex items-center gap-2">
+          <span class="material-symbols-outlined text-base">logout</span> Cerrar sesión
+        </button>
+        <a routerLink="/contacto" (click)="closeMenu()"
+           class="mt-3 gradient-cta px-5 py-3 rounded-full font-label font-semibold text-sm text-center">
           Empezar
         </a>
       </nav>

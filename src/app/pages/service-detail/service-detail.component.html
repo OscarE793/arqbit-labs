@@ -1,132 +1,168 @@
-<div *ngIf="service">
-  <!-- Breadcrumb -->
-  <section class="bg-arq-dark py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <nav class="breadcrumb-nav flex items-center space-x-2 text-sm" style="visibility: hidden;">
-        <a routerLink="/" class="text-gray-400 hover:text-white transition-colors">Inicio</a>
-        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-        <a routerLink="/servicios" class="text-gray-400 hover:text-white transition-colors">Servicios</a>
-        <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
-        <span class="text-arq-orange">{{ service.name }}</span>
+<div *ngIf="service; else loading">
+  <!-- ============================================================ -->
+  <!-- BREADCRUMB                                                   -->
+  <!-- ============================================================ -->
+  <section class="pt-24 pb-6 px-6 bg-background">
+    <div class="max-w-7xl mx-auto">
+      <nav class="breadcrumb-nav flex items-center gap-2 text-sm font-label">
+        <a routerLink="/" class="text-on-surface-variant hover:text-primary transition-colors">Inicio</a>
+        <span class="material-symbols-outlined text-xs text-on-surface-variant">chevron_right</span>
+        <a routerLink="/servicios" class="text-on-surface-variant hover:text-primary transition-colors">Servicios</a>
+        <span class="material-symbols-outlined text-xs text-on-surface-variant">chevron_right</span>
+        <span class="text-primary truncate max-w-[200px] md:max-w-none">{{ service.name }}</span>
       </nav>
     </div>
   </section>
 
-  <!-- Hero Detail -->
-  <section class="py-12 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- Image -->
-        <div class="detail-image rounded-2xl overflow-hidden shadow-lg" style="visibility: hidden;">
-          <img [src]="service.imageUrl" [alt]="service.name" class="w-full h-80 lg:h-full object-cover">
+  <!-- ============================================================ -->
+  <!-- HERO DETAIL                                                  -->
+  <!-- ============================================================ -->
+  <section class="relative px-6 pb-16 overflow-hidden">
+    <div class="absolute inset-0 z-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-2 gap-12 items-center">
+      <div class="detail-image relative">
+        <div class="aspect-square rounded-[2rem] overflow-hidden bg-surface-container shadow-2xl">
+          <img [src]="service.imageUrl" [alt]="service.name"
+               class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent"></div>
+        </div>
+        <div class="absolute top-6 left-6">
+          <span class="bg-background/80 backdrop-blur-sm text-on-surface text-xs font-label font-bold uppercase tracking-widest px-4 py-2 rounded-full">
+            {{ service.category }}
+          </span>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="detail-meta flex items-center gap-2">
+          <div class="h-[1px] w-8 bg-secondary"></div>
+          <span class="text-secondary font-label text-xs font-bold uppercase tracking-widest">
+            {{ service.modality }}
+          </span>
         </div>
 
-        <!-- Info -->
+        <h1 class="detail-title text-4xl md:text-6xl font-headline font-bold tracking-tighter leading-[1.0] text-on-surface">
+          {{ service.name }}
+        </h1>
+
+        <p class="detail-description text-lg text-on-surface-variant font-light leading-relaxed">
+          {{ service.fullDescription }}
+        </p>
+
+        <div class="detail-meta flex flex-wrap gap-3 pt-2">
+          <span *ngFor="let tag of service.techTags"
+                class="text-[10px] font-label font-bold uppercase tracking-widest px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant">
+            {{ tag }}
+          </span>
+        </div>
+
+        <div class="detail-buttons flex flex-wrap gap-4 pt-6">
+          <a routerLink="/contacto"
+             class="gradient-cta px-8 py-4 rounded-full font-headline font-bold text-white inline-flex items-center gap-2">
+            Solicitar Cotización
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </a>
+          <button (click)="toggleFavorite()"
+                  class="px-8 py-4 rounded-full font-headline font-bold border border-outline-variant hover:bg-surface-container transition-all inline-flex items-center gap-2"
+                  [class.text-primary]="isFavorite"
+                  [class.border-primary]="isFavorite"
+                  [class.text-on-surface]="!isFavorite">
+            <span class="material-symbols-outlined" [class.filled]="isFavorite">favorite</span>
+            {{ isFavorite ? 'En Favoritos' : 'Añadir a Favoritos' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FEATURES + SIDEBAR                                           -->
+  <!-- ============================================================ -->
+  <section class="px-6 py-16">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
+      <!-- Features -->
+      <div class="lg:col-span-2 space-y-10">
         <div>
-          <div class="flex flex-wrap gap-3 mb-4">
-            <span class="detail-meta bg-arq-blue/10 text-arq-blue text-sm font-semibold px-4 py-1.5 rounded-full" style="visibility: hidden;">
-              {{ service.category }}
-            </span>
-            <span class="detail-meta bg-gray-100 text-gray-600 text-sm px-4 py-1.5 rounded-full flex items-center" style="visibility: hidden;">
-              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-              {{ service.duration }}
-            </span>
-            <span class="detail-meta bg-gray-100 text-gray-600 text-sm px-4 py-1.5 rounded-full flex items-center" style="visibility: hidden;">
-              <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-              </svg>
-              {{ service.modality }}
-            </span>
+          <div class="flex items-center gap-2 mb-4">
+            <div class="h-[1px] w-8 bg-secondary"></div>
+            <span class="text-secondary font-label text-xs font-bold uppercase tracking-widest">Qué Incluye</span>
           </div>
+          <h2 class="text-3xl md:text-4xl font-headline font-bold tracking-tighter text-on-surface mb-8">
+            Alcance del Servicio
+          </h2>
 
-          <h1 class="detail-title font-exo font-bold text-3xl md:text-4xl text-arq-dark mb-4" style="visibility: hidden;">{{ service.name }}</h1>
-          <p class="detail-description text-gray-500 text-lg leading-relaxed mb-8" style="visibility: hidden;">{{ service.fullDescription }}</p>
-
-          <div class="detail-buttons flex flex-wrap gap-4" style="visibility: hidden;">
-            <a routerLink="/contacto"
-               class="bg-gradient-to-r from-arq-orange to-arq-amber text-white px-8 py-3 rounded-xl font-exo font-semibold hover:shadow-lg hover:shadow-arq-orange/30 transition-all inline-flex items-center">
-              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-              </svg>
-              Solicitar Cotización
-            </a>
-            <button (click)="toggleFavorite()"
-                    class="border-2 px-6 py-3 rounded-xl font-exo font-semibold transition-all inline-flex items-center"
-                    [class]="isFavorite
-                      ? 'border-arq-orange bg-arq-orange/10 text-arq-orange'
-                      : 'border-gray-200 text-gray-600 hover:border-arq-orange hover:text-arq-orange'">
-              <svg class="w-5 h-5 mr-2" [attr.fill]="isFavorite ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-              </svg>
-              {{ isFavorite ? 'En Favoritos' : 'Agregar a Favoritos' }}
-            </button>
-          </div>
+          <ul class="space-y-4">
+            <li *ngFor="let feature of service.features"
+                class="feature-item flex items-start gap-4 p-5 bg-surface-container rounded-2xl hover:bg-surface-container-high transition-colors">
+              <div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-primary text-xl">check</span>
+              </div>
+              <p class="text-on-surface font-body leading-relaxed pt-1.5">{{ feature }}</p>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Features & Sidebar -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-3 gap-8">
-        <!-- Features -->
-        <div class="lg:col-span-2">
-          <h2 class="font-exo font-bold text-2xl text-arq-dark mb-6">Características del Servicio</h2>
-          <div class="grid md:grid-cols-2 gap-4">
-            <div *ngFor="let feature of service.features"
-                 class="feature-item flex items-start space-x-3 bg-white p-4 rounded-xl border border-gray-100" style="visibility: hidden;">
-              <svg class="w-6 h-6 text-green-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-              </svg>
-              <span class="text-gray-600 text-sm">{{ feature }}</span>
+      <!-- Sidebar -->
+      <aside class="sidebar-area space-y-6">
+        <!-- Pricing Card -->
+        <div class="sidebar-card bg-surface-container rounded-3xl p-8 sticky top-24">
+          <span class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Inversión Desde</span>
+          <p class="font-headline font-bold text-4xl text-on-surface mt-2 mb-1">
+            {{ formatPrice(service.price) }}
+          </p>
+          <p class="text-sm text-on-surface-variant font-body mb-6">Precio por proyecto base</p>
+
+          <div class="space-y-4 pb-6 border-b border-outline-variant/30">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">schedule</span>
+              <div>
+                <p class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Duración</p>
+                <p class="font-body text-sm text-on-surface">{{ service.duration }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">public</span>
+              <div>
+                <p class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Modalidad</p>
+                <p class="font-body text-sm text-on-surface">{{ service.modality }}</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-primary text-xl">verified</span>
+              <div>
+                <p class="text-[10px] font-label text-on-surface-variant uppercase tracking-widest">Estado</p>
+                <p class="font-body text-sm text-on-surface">{{ service.status }}</p>
+              </div>
             </div>
           </div>
+
+          <a routerLink="/contacto"
+             class="gradient-cta w-full py-4 rounded-full font-headline font-bold text-white inline-flex items-center justify-center gap-2 mt-6">
+            Contactar Ahora
+            <span class="material-symbols-outlined">send</span>
+          </a>
         </div>
 
-        <!-- Sidebar -->
-        <div class="sidebar-area space-y-6">
-          <!-- Price Card -->
-          <div class="sidebar-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" style="visibility: hidden;">
-            <span class="text-gray-400 text-sm">Inversión desde</span>
-            <div class="font-rajdhani font-bold text-4xl text-arq-blue mt-1 mb-4">
-              {{ formatPrice(service.price) }}
-            </div>
-            <a routerLink="/contacto"
-               class="block w-full bg-arq-blue text-white text-center py-3 rounded-xl font-exo font-semibold hover:bg-arq-sky transition-colors">
-              Contratar Servicio
-            </a>
-          </div>
-
-          <!-- Tech Tags -->
-          <div class="sidebar-card bg-white rounded-2xl p-6 border border-gray-100 shadow-sm" style="visibility: hidden;">
-            <h3 class="font-exo font-bold text-lg text-arq-dark mb-4">Tecnologías</h3>
-            <div class="flex flex-wrap gap-2">
-              <span *ngFor="let tag of service.techTags"
-                    class="bg-arq-dark/5 text-arq-dark text-sm px-3 py-1.5 rounded-lg font-medium">
-                {{ tag }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
+        <!-- Back to catalog -->
+        <a routerLink="/servicios"
+           class="sidebar-card block text-center py-4 rounded-full border border-outline-variant hover:bg-surface-container transition-all text-on-surface-variant hover:text-on-surface font-label text-sm">
+          <span class="material-symbols-outlined align-middle mr-1">arrow_back</span>
+          Volver al Catálogo
+        </a>
+      </aside>
     </div>
   </section>
 </div>
 
-<!-- Not Found -->
-<div *ngIf="!service" class="min-h-screen flex items-center justify-center bg-gray-50">
-  <div class="text-center">
-    <h2 class="font-exo font-bold text-2xl text-arq-dark mb-4">Servicio no encontrado</h2>
-    <a routerLink="/servicios" class="text-arq-blue hover:text-arq-sky transition-colors font-semibold">
-      Volver al catálogo
-    </a>
+<ng-template #loading>
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="flex flex-col items-center gap-4">
+      <div class="w-16 h-16 rounded-full border-4 border-surface-container border-t-primary animate-spin"></div>
+      <p class="font-label text-on-surface-variant">Cargando servicio...</p>
+    </div>
   </div>
-</div>
+</ng-template>

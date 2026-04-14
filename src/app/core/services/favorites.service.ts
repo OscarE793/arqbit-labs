@@ -1,3 +1,11 @@
+/**
+ * favorites.service.ts – Gestión de servicios favoritos del usuario.
+ *
+ * Almacena los IDs de los servicios marcados como favoritos en
+ * localStorage (clave 'arqbit_favorites') y emite cambios reactivos
+ * mediante un BehaviorSubject para actualizar el badge del header
+ * y la vista de Favoritos en tiempo real.
+ */
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 

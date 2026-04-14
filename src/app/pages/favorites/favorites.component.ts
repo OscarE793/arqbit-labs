@@ -1,3 +1,11 @@
+/**
+ * favorites.component.ts – Vista de servicios favoritos del usuario.
+ *
+ * Muestra los servicios guardados en formato de filas horizontales.
+ * Se suscribe a FavoritesService.favorites$ para actualización reactiva.
+ * La eliminación incluye animación GSAP de salida antes de remover.
+ * Los datos persisten en localStorage entre sesiones del navegador.
+ */
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';

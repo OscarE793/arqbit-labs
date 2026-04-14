@@ -1,3 +1,12 @@
+/**
+ * contact.component.ts – Formulario de contacto de ARQBIT LABS.
+ *
+ * Implementa un formulario reactivo (Reactive Forms) con validaciones:
+ * - nombre: requerido
+ * - email: requerido + formato válido (Validators.email)
+ * - mensaje: requerido
+ * Al enviar muestra un banner de éxito verde (emerald) con animación GSAP.
+ */
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';

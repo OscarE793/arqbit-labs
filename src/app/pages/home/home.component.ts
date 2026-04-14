@@ -1,3 +1,10 @@
+/**
+ * home.component.ts – Página de inicio de ARQBIT LABS.
+ *
+ * Contiene: hero section con tarjetas flotantes, barra de estadísticas,
+ * servicios destacados (3 primeros del catálogo), testimonios y CTA.
+ * Todas las secciones usan animaciones GSAP con ScrollTrigger.
+ */
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';

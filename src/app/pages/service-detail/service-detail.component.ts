@@ -1,3 +1,11 @@
+/**
+ * service-detail.component.ts – Vista detallada de un servicio.
+ *
+ * Carga el servicio por su ID obtenido de la ruta dinámica /servicios/:id.
+ * Muestra imagen, descripción completa, lista de características,
+ * tags tecnológicos y sidebar con precio. Permite agregar/quitar de
+ * favoritos. Animaciones GSAP con ScrollTrigger para entrada progresiva.
+ */
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';

@@ -1,3 +1,17 @@
+/**
+ * admin.component.ts – Panel de administración (CRUD) de ARQBIT LABS.
+ *
+ * Funcionalidades:
+ * - Crear nuevos servicios con formulario reactivo validado
+ * - Editar servicios existentes (patchValue al formulario)
+ * - Eliminar servicios con confirmación y animación de salida
+ * - Buscar servicios por nombre o categoría
+ * - Paginación (6 servicios por página)
+ * - Resetear catálogo al seed original (services.json)
+ *
+ * Ruta protegida por authGuard: requiere autenticación previa en /login.
+ * Todas las operaciones CRUD persisten en localStorage vía ServicesDataService.
+ */
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -10,6 +24,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+/** Modo del formulario: crear un nuevo servicio o editar uno existente */
 type Mode = 'create' | 'edit';
 
 @Component({

@@ -1,3 +1,10 @@
+/**
+ * login.component.ts – Página de inicio de sesión del administrador.
+ *
+ * Formulario reactivo con validaciones (mín. 3 caracteres usuario,
+ * mín. 4 caracteres contraseña). Al autenticarse correctamente
+ * redirige a /admin. Incluye toggle de visibilidad de contraseña.
+ */
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';

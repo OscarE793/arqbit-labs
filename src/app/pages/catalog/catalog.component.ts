@@ -1,3 +1,10 @@
+/**
+ * catalog.component.ts – Vista de catálogo de servicios de ARQBIT LABS.
+ *
+ * Muestra todos los servicios en un grid responsive con filtro por
+ * categoría mediante chips. Los servicios se obtienen reactivamente
+ * del ServicesDataService. Incluye animaciones GSAP al filtrar.
+ */
 import { Component, OnInit, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ServiceCardComponent } from '../../shared/components/service-card/service-card.component';

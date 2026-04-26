@@ -2,6 +2,9 @@
 
 Plataforma web de catalogo de servicios tecnologicos desarrollada con **Angular 17**, **Tailwind CSS** y **GSAP**, como proyecto de la materia **Virtual / Front End** del Politecnico Grancolombiano.
 
+**Aplicacion en produccion:** [https://arqbitlabs.com/](https://arqbitlabs.com/)
+**Repositorio:** [https://github.com/OscarE793/arqbit-labs](https://github.com/OscarE793/arqbit-labs)
+
 ## Caracteristicas
 
 - **6 vistas principales**: Home, Catalogo, Detalle del Servicio, Contacto, Favoritos y Administracion (CRUD).
